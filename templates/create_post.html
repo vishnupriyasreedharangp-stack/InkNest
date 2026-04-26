@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Create Post</h2>
+
+<form method="POST">
+    <input type="text" name="title" placeholder="Title" required>
+    <textarea name="content" placeholder="Write your story..." required></textarea>
+    <button type="submit">Publish</button>
+</form>
+{% endblock %}

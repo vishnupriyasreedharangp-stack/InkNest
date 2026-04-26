@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="dashboard">
+
+    <div class="dashboard-header">
+        <h2>Your Writing Space ✍️</h2>
+        <a href="/create" class="btn">+ New Post</a>
+    </div>
+
+    {% if posts %}
+        <div class="posts">
+            {% for post in posts %}
+                <div class="card">
+                    <h3>{{ post.title }}</h3>
+                    <p>{{ post.content[:120] }}...</p>
+
+                    <div class="actions">
+                        <a href="/post/{{ post.id }}">Read</a>
+                        <a href="/edit/{{ post.id }}">Edit</a>
+                        <a href="/delete/{{ post.id }}">Delete</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="empty">You haven’t written anything yet. Start your first story 🚀</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+<div class="hero">
+    <h1>Where Ideas Find Their Voice ✍️</h1>
+    <p>
+        InkNest is your space to write, reflect, and share stories that matter.  
+        Start your journey, one post at a time.
+    </p>
+
+    {% if not current_user.is_authenticated %}
+        <a href="/signup" class="btn">Start Writing</a>
+    {% else %}
+        <a href="/create" class="btn">Write a Blog</a>
+    {% endif %}
+</div>
+
+<!-- POSTS SECTION -->
+<h2 class="section-title">Recent Stories</h2>
+
+<div class="posts">
+    {% for post in posts %}
+        <div class="card">
+            <h3>{{ post.title }}</h3>
+
+            <p>
+                {{ post.content[:120] }}...
+            </p>
+
+            <a href="/post/{{ post.id }}" class="btn">Read More</a>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

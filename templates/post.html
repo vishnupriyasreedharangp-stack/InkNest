@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ post.title }}</h1>
+
+{% if post.summary %}
+<div class="summary">
+    <strong>AI Summary:</strong>
+    <p>{{ post.summary }}</p>
+</div>
+{% endif %}
+
+<p>{{ post.content }}</p>
+
+<a href="/summarize/{{ post.id }}">Generate AI Summary</a>
+
+{% if current_user.id == post.user_id %}
+    <a href="/edit/{{ post.id }}">Edit</a>
+    <a href="/delete/{{ post.id }}">Delete</a>
+{% endif %}
+
+{% endblock %}
